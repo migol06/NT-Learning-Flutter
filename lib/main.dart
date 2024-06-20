@@ -48,17 +48,37 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            counter++;
-          });
-        },
-        child: Icon(Icons.add),
-        tooltip: 'Increment',
-        backgroundColor: Colors.green,
-        foregroundColor: Colors.white,
-        elevation: 1000.0,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                counter++;
+              });
+            },
+            child: Icon(Icons.add),
+            tooltip: 'Increment',
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
+            elevation: 1000.0,
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                counter--;
+              });
+            },
+            child: Icon(Icons.remove),
+            tooltip: 'Decrement',
+            backgroundColor: Colors.red,
+            foregroundColor: Colors.white,
+            elevation: 1000.0,
+          ),
+        ],
       ),
     );
   }
