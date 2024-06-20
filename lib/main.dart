@@ -29,6 +29,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,15 +38,27 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Counter App'),
         backgroundColor: Colors.blue,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Counter Application'),
             Text('You have Pressed'),
-            Text('0'),
+            Text(counter.toString()),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            counter++;
+          });
+        },
+        child: Icon(Icons.add),
+        tooltip: 'Increment',
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+        elevation: 1000.0,
       ),
     );
   }
