@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sample/fab.dart';
 import 'package:sample/my_container.dart';
+import 'package:sample/names.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,6 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int secondCounter = 0;
   int thirCounter = 0;
 
+  var person = Person();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,60 +44,51 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Counter Application'),
         backgroundColor: Colors.purple[200],
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MyContainer(
-              text: counter.toString(),
-              color: Colors.red,
+            Container(
+              height: 150.0,
+              child: ListView.builder(
+                itemCount: 20,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return const MyCircleContainer();
+                },
+              ),
             ),
-            MyContainer(
-              text: secondCounter.toString(),
-              color: Colors.blue,
-            ),
-            MyContainer(
-              text: thirCounter.toString(),
-              color: Colors.green,
-            )
+            ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return MyContainer(
+                    text: person.names[index],
+                    color: Colors.green,
+                  );
+                },
+                itemCount: person.names.length)
           ],
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          MyFAB(
-            onPressed: () {
-              setState(() {
-                counter++;
-              });
-            },
-            backgroundColor: Colors.red,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          MyFAB(
-            onPressed: () {
-              setState(() {
-                secondCounter++;
-              });
-            },
-            backgroundColor: Colors.blue,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          MyFAB(
-            onPressed: () {
-              setState(() {
-                thirCounter++;
-              });
-            },
-            backgroundColor: Colors.green,
-          ),
-        ],
+    );
+  }
+}
+
+class MyCircleContainer extends StatelessWidget {
+  const MyCircleContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 60,
+      height: 70,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.red,
       ),
+      margin: EdgeInsets.all(10),
     );
   }
 }
