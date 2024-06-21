@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/fab.dart';
 import 'package:sample/my_container.dart';
 
 void main() {
@@ -31,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int counter = 0;
+  int secondCounter = 0;
+  int thirCounter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +42,58 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Counter Application'),
         backgroundColor: Colors.purple[200],
       ),
-      body: const Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MyContainer(
+              text: counter.toString(),
+              color: Colors.red,
+            ),
+            MyContainer(
+              text: secondCounter.toString(),
+              color: Colors.blue,
+            ),
+            MyContainer(
+              text: thirCounter.toString(),
+              color: Colors.green,
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          MyContainer(
-            text: 'Hello World',
-            color: Colors.red,
-            width: double.infinity,
-            alignment: Alignment.bottomRight,
+          MyFAB(
+            onPressed: () {
+              setState(() {
+                counter++;
+              });
+            },
+            backgroundColor: Colors.red,
           ),
-          MyContainer(
-            text: 'NT',
-            color: Colors.blue,
-            width: 300,
+          const SizedBox(
+            width: 10,
           ),
-          MyContainer(
-            text: 'BSU',
-            color: Colors.green,
-          )
+          MyFAB(
+            onPressed: () {
+              setState(() {
+                secondCounter++;
+              });
+            },
+            backgroundColor: Colors.blue,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          MyFAB(
+            onPressed: () {
+              setState(() {
+                thirCounter++;
+              });
+            },
+            backgroundColor: Colors.green,
+          ),
         ],
       ),
     );
