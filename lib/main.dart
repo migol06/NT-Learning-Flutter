@@ -50,10 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               height: 150.0,
               child: ListView.builder(
-                itemCount: 20,
+                itemCount: person.image.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return const MyCircleContainer();
+                  return MyCircleContainer(
+                    image: person.image[index],
+                  );
                 },
               ),
             ),
@@ -77,16 +79,20 @@ class _MyHomePageState extends State<MyHomePage> {
 class MyCircleContainer extends StatelessWidget {
   const MyCircleContainer({
     super.key,
+    required this.image,
   });
+
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 60,
-      height: 70,
+      width: 80,
+      height: 80,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.red,
+        image: DecorationImage(image: NetworkImage(image), fit: BoxFit.cover),
       ),
       margin: EdgeInsets.all(10),
     );
