@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/my_container.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,46 +39,24 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Counter Application'),
         backgroundColor: Colors.purple[200],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Counter Application'),
-            Text('You have Pressed'),
-            Text(counter.toString()),
-          ],
-        ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+      body: const Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                counter++;
-              });
-            },
-            child: Icon(Icons.add),
-            tooltip: 'Increment',
-            backgroundColor: Colors.green,
-            foregroundColor: Colors.white,
-            elevation: 1000.0,
+          MyContainer(
+            text: 'Hello World',
+            color: Colors.red,
+            width: double.infinity,
+            alignment: Alignment.bottomRight,
           ),
-          SizedBox(
-            width: 20,
+          MyContainer(
+            text: 'NT',
+            color: Colors.blue,
+            width: 300,
           ),
-          FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                counter--;
-              });
-            },
-            child: Icon(Icons.remove),
-            tooltip: 'Decrement',
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-            elevation: 1000.0,
-          ),
+          MyContainer(
+            text: 'BSU',
+            color: Colors.green,
+          )
         ],
       ),
     );
