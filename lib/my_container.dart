@@ -21,7 +21,7 @@ class MyContainer extends StatelessWidget {
       height: height,
       width: width,
       color: color,
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
       alignment: alignment,
       child: Text(text),
 

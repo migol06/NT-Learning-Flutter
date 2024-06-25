@@ -31,10 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int counter = 0;
-  int secondCounter = 0;
-  int thirCounter = 0;
-
   var person = Person();
 
   @override
@@ -48,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Container(
+              color: Colors.red,
               height: 150.0,
               child: ListView.builder(
                 itemCount: person.image.length,
