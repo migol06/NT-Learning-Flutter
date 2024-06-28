@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:sample/data/data.dart';
 
 class MyPersonalProfileScreen extends StatelessWidget {
   const MyPersonalProfileScreen({
     super.key,
+    required this.image,
+    required this.name,
   });
+
+  final String image;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
-    final ScreenArgs args =
-        ModalRoute.of(context)!.settings.arguments as ScreenArgs;
+    // final ScreenArgs args =
+    //     ModalRoute.of(context)!.settings.arguments as ScreenArgs;
     return Scaffold(
       appBar: AppBar(
         title: Text('Personal Profile'),
@@ -22,12 +26,12 @@ class MyPersonalProfileScreen extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(args.image),
+                  image: NetworkImage(image),
                 ),
               ),
             ),
             Text(
-              args.name,
+              name,
               style: TextStyle(fontSize: 50),
             ),
           ],
