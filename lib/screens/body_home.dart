@@ -12,11 +12,12 @@ class MyHomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // var person = Person();
     return SingleChildScrollView(
       child: Column(
         children: [
           Container(
-            color: Colors.red,
+            // color: Colors.red,
             height: 150.0,
             child: ListView.builder(
               itemCount: person.image.length,

@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.settings), label: 'Settings'),
+          NavigationDestination(icon: Icon(Icons.person), label: 'Person'),
           NavigationDestination(icon: Icon(Icons.star), label: 'Star'),
         ],
         onDestinationSelected: (int index) {
