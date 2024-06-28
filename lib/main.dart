@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/anotherscreen.dart';
 import 'package:sample/my_container.dart';
 import 'package:sample/names.dart';
 
@@ -61,6 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return MyContainer(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              MySecondSreen(name: person.names[index]),
+                        ),
+                      );
+                    },
                     text: person.names[index],
                     color: Colors.green,
                   );
