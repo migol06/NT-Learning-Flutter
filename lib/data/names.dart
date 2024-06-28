@@ -8,8 +8,8 @@ class Person {
     "Oliver Taylor",
     "Mia Davis",
     "Liam Martinez",
-    "Sophia Garcia",
-    "Noah Rodriguez"
+    // "Sophia Garcia",
+    // "Noah Rodriguez"
   ];
 
   final List<String> image = [
