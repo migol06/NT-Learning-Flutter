@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sample/data/data.dart';
 import 'package:sample/widgets/widget.dart';
 
@@ -21,9 +22,8 @@ class MyListNameBody extends StatelessWidget {
             image: person.image[index],
             text: person.names[index],
             onTap: () {
-              Navigator.pushNamed(context, '/second',
-                  arguments:
-                      ScreenArgs(person.names[index], person.image[index]));
+              context.push(
+                  '/profile?image=${person.image[index]}&name=${person.names[index]}');
             },
           );
         },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MyPersonalProfileScreen extends StatelessWidget {
   const MyPersonalProfileScreen({
@@ -21,15 +22,7 @@ class MyPersonalProfileScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(image),
-                ),
-              ),
-            ),
+            Image.asset(image),
             Text(
               name,
               style: TextStyle(fontSize: 50),

@@ -6,9 +6,9 @@ class Routes {
     initialLocation: '/',
     routes: [
       GoRoute(
-        path: '/',
-        builder: (context, state) => const MyHomePage(),
-      ),
+          path: '/',
+          builder: (context, state) => const MyHomePage(),
+          routes: []),
       GoRoute(
         path: '/profile',
         builder: (context, state) {
