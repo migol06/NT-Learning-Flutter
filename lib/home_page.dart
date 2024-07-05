@@ -10,8 +10,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  String emailErrorText = '';
-  String passwordErrorText = '';
+  String? emailErrorText;
+  String? passwordErrorText;
 
   final _key = GlobalKey<FormState>();
 
@@ -27,9 +27,10 @@ class _MyHomePageState extends State<MyHomePage> {
   String? _passwordValidator(String? password) {
     if (password == null || password.isEmpty) {
       return 'Please enter your password';
-    } else if (!RegExp(r'^[a-zA-Z0-9.!@#\$%^&*()-_=+|;:,./<>?]{8,}$')
+    } else if (!RegExp(
+            r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$')
         .hasMatch(password)) {
-      return 'Invalid Password';
+      return 'Minimum eight characters, at least one letter, one number and one special character';
     }
     return null;
   }
@@ -72,14 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       errorText: passwordErrorText),
                   controller: _passwordController,
                   validator: _passwordValidator,
-                  obscureText: true,
+                  obscureText: false,
                 ),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      // emailErrorText = _emailValidator(_emailController.text)!;
-                      passwordErrorText =
-                          _passwordValidator(_passwordController.text)!;
+                      String? emailError =
+                          _emailValidator(_emailController.text);
+                      String? passwordError =
+                          _passwordValidator(_passwordController.text);
+                      emailErrorText = emailError;
+                      passwordErrorText = passwordError;
                     });
                     if (_key.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -91,7 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: const Text('Get the text'),
                 ),
-                Text(emailErrorText)
               ],
             ),
           ),
